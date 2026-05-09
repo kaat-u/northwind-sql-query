@@ -1,9 +1,7 @@
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 4.	(2 pts) Escribe la consulta SQL para 
--- mostrar todos los pedidos realizados 
--- por la compañía Rattlesnake Canyon Grocery.
+-- 4. Pedidos por compañía
 
 SELECT * 
 FROM Orders 
@@ -16,9 +14,7 @@ WHERE CustomerID IN (
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 5.	(2 pts) Escribe la consulta SQL para mostrar 
--- el nombre del producto y la cantidad vendida 
--- en la categoría Beverages.
+-- 5. Productos vendidos en categoría
 
 SELECT p.ProductName AS 'Producto',
 	SUM(od.Quantity) AS 'Cantidad Vendida'
@@ -34,9 +30,7 @@ GO
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 6.	(2 pts) Usando la tabla Employees, escribe 
--- una consulta que muestre el nombre completo del 
--- empleado y el nombre de su supervisor (SELF JOIN).
+-- 6. Empleado y su supervisor (SELF JOIN)
 
 SELECT e.FirstName + ' ' + e.LastName AS 'Empleado',
 	   s.FirstName + ' ' + s.LastName AS 'Supervisor'
@@ -48,10 +42,7 @@ GO
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 7.	(2 pts) Escribe una consulta que muestre 
--- el nombre del producto y un campo calculado 
--- con CASE que lo clasifique como 
--- Barato (<10), Medio (10–50) o Caro (>50).
+-- 7. Clasificación de precio (CASE)
 
 SELECT ProductName AS 'Producto',
 	   UnitPrice AS 'Precio',
@@ -66,10 +57,7 @@ GO
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 8.	(2 pts) A partir de la tabla Orders, 
--- escribe una consulta que muestre el número de pedido,
--- el cliente y un campo calculado que indique si está 
--- Enviado o Pendiente. Explica cómo funciona la condición.
+-- 8. Estado del pedido (Enviado / Pendiente)
 
 SELECT o.OrderID AS 'Número de pedido',
 	   o.CustomerID AS 'Cliente',
@@ -83,10 +71,7 @@ GO
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 9.	(2 pts) Escribe una consulta que muestre 
--- los clientes y el total de sus compras, 
--- ordenados de mayor a menor. 
--- ¿Qué función de agregación utilizaste y por qué?
+-- 9. Total de compras por cliente (ORDER BY DESC) 
 
 SELECT o.CustomerID AS 'Cliente',
 	   SUM(od.UnitPrice * od.Quantity) AS 'Total compras'
@@ -100,10 +85,7 @@ GO
 ------------------------------------------------------------
 ------------------------------------------------------------
 
--- 10.	(2 pts) Usando UNION, combina en una sola lista 
--- los nombres de los productos vendidos y los nombres 
--- de las categorías. Explica qué condición debe cumplirse 
--- para que UNION funcione correctamente.
+-- 10.	Productos y categorías en una lista (UNION) 
 
 SELECT ProductName AS 'Nombre'
 FROM Products
